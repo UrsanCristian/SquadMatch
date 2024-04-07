@@ -19,12 +19,14 @@ public class LobbyController {
     public String lobbyList(Model model) {
         List<Lobby> lobbies = lobbyRepository.findAll();
         model.addAttribute("title", "Matches");
+        model.addAttribute("lobbies", lobbies);
         return "lobby_list";
     }
     @GetMapping("/matches/{id}")
     public String lobbyDetails(Model model, @PathVariable int id) {
         Lobby lobby = lobbyRepository.findById(id).orElse(null);
         model.addAttribute("title", "Match Details");
+        model.addAttribute("lobby", lobby);
         return "lobby_details";
     }
 }
