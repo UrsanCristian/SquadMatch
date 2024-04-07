@@ -20,10 +20,10 @@ public class Lobby {
     private Location location;
 
     @ManyToMany
-    private List<CustomUser> team1;
+    private List<User> team1;
 
     @ManyToMany
-    private List<CustomUser> team2;
+    private List<User> team2;
 
     private Boolean is_active;
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class CustomUser {
+public class User {
     @Id
     @GeneratedValue
     private int id;
