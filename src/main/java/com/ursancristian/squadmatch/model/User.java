@@ -2,13 +2,18 @@ package com.ursancristian.squadmatch.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 
 @Entity
-@Data
+@Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue
@@ -24,9 +29,9 @@ public class User {
     @NotNull
     private String email;
 
-    private Boolean is_active = true;
+    private Boolean isActive = true;
 
-    private Boolean is_admin = false;
+    private Boolean isAdmin = false;
 
     private String pictureUrl;
 
@@ -34,13 +39,34 @@ public class User {
 
     private int losses = 0;
 
-    private int ratingBehavior;
-
-    private int ratingSkills;
-
     @ManyToMany(mappedBy = "team1")
     private List<Lobby> lobbyTeams1;
 
     @ManyToMany(mappedBy = "team2")
     private List<Lobby> lobbyTeams2;
+
+    @OneToMany(mappedBy = "playerFrom")
+    private List<Rating> ratingsSent;
+
+    @OneToMany(mappedBy = "playerTo")
+    private List<Rating> ratingsReceived;
+
+    @OneToMany(mappedBy = "creator")
+    private List<Lobby> lobbyCreator;
+
+    public Double averageBehavior() {
+        return this.ratingsReceived.stream()
+                .mapToInt(Rating::getBehavior)
+                .average()
+                .orElse(0f);
+    }
+
+    public Double averageSkills() {
+        return this.ratingsReceived.stream()
+                .mapToInt(Rating::getSkills)
+                .average()
+                .orElse(0f);
+    }
+
+
 }
