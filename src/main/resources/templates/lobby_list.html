@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{base :: head}">
+</head>
+<body>
+<nav th:replace="~{base :: nav-bar}"></nav>
+<section id="match-list">
+    <div class="lobby" th:each="lobby : ${lobbies}">
+        <h3 class="p-title" th:text="${lobby.title}"></h3>
+        <p class="text" th:text="${lobby.creator}"></p>
+        <p class="text" th:text="${lobby.scheduledTime}"></p>
+        <p class="text" th:text="${lobby.location}"></p>
+    </div>
+</section>
+</body>
