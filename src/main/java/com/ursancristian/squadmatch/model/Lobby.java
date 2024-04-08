@@ -1,18 +1,28 @@
 package com.ursancristian.squadmatch.model;
 
+import com.ursancristian.squadmatch.enumerations.Team;
 import jakarta.persistence.*;
-import lombok.Data;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class Lobby {
     @Id
     @GeneratedValue
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private User creator;
+
+    private String title;
 
     private int maxPlayers;
 
@@ -25,14 +35,17 @@ public class Lobby {
     @ManyToMany
     private List<User> team2;
 
-    private Boolean is_active;
+    private Boolean isOpen = true;
 
-    private LocalDateTime date;
+    private LocalDateTime scheduledTime;
 
-    private String winner;
+    @Setter
+    @Enumerated(EnumType.STRING)
+    private Team winner;
 
     @OneToMany(mappedBy = "lobby")
     private List<Rating> ratings;
+
 
 }
 
