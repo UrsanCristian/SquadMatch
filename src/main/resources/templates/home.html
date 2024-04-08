@@ -4,99 +4,98 @@
 
 </head>
 <body>
-<div th:replace="~{base :: nav-bar}"></div>
-<div>
-    <section class="hero">
-        <h1 class="heroTitle">Welcome To Squad Match!</h1>
-        <h3 class="heroText">Football matches for you and your friends</h3>
-    </section>
+<nav th:replace="~{base :: nav-bar}"></nav>
+<section class="hero">
+    <h1 class="heroTitle">Welcome To Squad Match!</h1>
+    <h3 class="heroText">Football matches for you and your friends</h3>
+</section>
 
-    <section id="about">
-        <h2 class="sectionTitle">About</h2>
-        <div class="container-row">
-            <img class="image size-medium" th:src="@{/images/fb1.jpg}" alt="Football Field">
-            <div class="container-info">
-                <h4 class="p-title">What is Squad Match?</h4>
-                <p class="text">
-                    Welcome to Squad Match, your ultimate companion in the world of local football! Our mission is to
-                    bridge the gap between football enthusiasts and the games that happen right in their neighborhood.
-                    Whether you're looking to join a match, find players to complete your squad, or simply discover
-                    where the next game is happening, Squad Match has got you covered.
-                </p>
-                <p class="text">
-                    At Squad Match, we believe that football is more than just a game; it's a community. That's why
-                    we've created a platform that not only makes it easy to find local matches but also connects you
-                    with fellow football lovers in your area. From casual kickabouts to competitive league games, our
-                    website is designed to cater to all levels of skill and commitment.
-                </p>
-            </div>
+<section id="about">
+    <h2 class="sectionTitle">About</h2>
+    <div class="container-row">
+        <img class="image size-medium" th:src="@{/images/fb1.jpg}" alt="Football Field">
+        <div class="container-info">
+            <h4 class="p-title">What is Squad Match?</h4>
+            <p class="text">
+                Welcome to Squad Match, your ultimate companion in the world of local football! Our mission is to
+                bridge the gap between football enthusiasts and the games that happen right in their neighborhood.
+                Whether you're looking to join a match, find players to complete your squad, or simply discover
+                where the next game is happening, Squad Match has got you covered.
+            </p>
+            <p class="text">
+                At Squad Match, we believe that football is more than just a game; it's a community. That's why
+                we've created a platform that not only makes it easy to find local matches but also connects you
+                with fellow football lovers in your area. From casual kickabouts to competitive league games, our
+                website is designed to cater to all levels of skill and commitment.
+            </p>
         </div>
-        <div class="container-row" style="">
-            <div class="container-info" style="margin-left: 1rem">
-                <h4 class="p-title">How it works:</h4>
-                <div class="container-column">
-                    <div>
-                        <span class="step">Step 1.</span>
-                        <span class="step-text">
+    </div>
+    <div class="container-row" style="">
+        <div class="container-info" style="margin-left: 1rem">
+            <h4 class="p-title">How it works:</h4>
+            <div class="container-column">
+                <div>
+                    <span class="step">Step 1.</span>
+                    <span class="step-text">
                             <a class="text-link" href="">Create</a> an account.
                         </span>
-                    </div>
-                    <div>
-                        <span class="step">Step 2.</span>
-                        <span class="step-text">
+                </div>
+                <div>
+                    <span class="step">Step 2.</span>
+                    <span class="step-text">
                             Customize your <a class="text-link" href="">profile.</a>
                         </span>
-                    </div>
-                    <div>
-                        <span class="step">Step 3.</span>
-                        <span class="step-text">
+                </div>
+                <div>
+                    <span class="step">Step 3.</span>
+                    <span class="step-text">
                             Visit <a class="text-link" href="">Matches</a> page to create or join a lobby.
                         </span>
-                    </div>
-                    <div>
-                        <span class="step">Step 4.</span>
-                        <span class="step-text">
+                </div>
+                <div>
+                    <span class="step">Step 4.</span>
+                    <span class="step-text">
                             Confirm that you are in and wait for other players to join.
                         </span>
-                    </div>
-                    <div>
-                        <span class="step">Step 4.</span>
-                        <span class="step-text">
+                </div>
+                <div>
+                    <span class="step">Step 4.</span>
+                    <span class="step-text">
                             Finally, the match should be scheduled. Prepare to show the world how good you are on the 
                             pitch!
                         </span>
-                    </div>
                 </div>
             </div>
-            <img class="image size-medium" th:src="@{/images/fb2.jpg}" alt="Penalty Shot">
         </div>
-    </section>
-    <section id="stats">
-        <div class="container-row space-even">
-            <div class="container-column centered stats-width stats-margins">
-                <img class="icon-xl" th:src="@{/icons/matches-icon.png}" alt="Matches Icon">
-                <span class="big-number">10</span>
-                <span class="stats-text">Matches Created</span>
-            </div>
-            <div class="container-column centered stats-width stats-margins">
-                <img class="icon-xl" th:src="@{/icons/players-icon.png}" alt="Players Icon">
-                <span class="big-number">100</span>
-                <span class="stats-text">Active Players</span>
-            </div>
-            <div class="container-column centered stats-width stats-margins">
-                <img class="icon-xl" th:src="@{/icons/locations-icon.png}" alt="Locations Icon">
-                <span class="big-number">5</span>
-                <span class="stats-text">Verified Locations</span>
-            </div>
-            <div class="container-column">
-
-            </div>
-            <div class="container-column">
-
-            </div>
+        <img class="image size-medium" th:src="@{/images/fb2.jpg}" alt="Penalty Shot">
+    </div>
+</section>
+<section id="stats">
+    <div class="container-row space-even">
+        <div class="container-column centered stats-width stats-margins">
+            <img class="icon-xl" th:src="@{/icons/matches-icon.png}" alt="Matches Icon">
+            <span class="big-number">10</span>
+            <span class="stats-text">Matches Created</span>
         </div>
-    </section>
-</div>
+        <div class="container-column centered stats-width stats-margins">
+            <img class="icon-xl" th:src="@{/icons/players-icon.png}" alt="Players Icon">
+            <span class="big-number">100</span>
+            <span class="stats-text">Active Players</span>
+        </div>
+        <div class="container-column centered stats-width stats-margins">
+            <img class="icon-xl" th:src="@{/icons/locations-icon.png}" alt="Locations Icon">
+            <span class="big-number">5</span>
+            <span class="stats-text">Verified Locations</span>
+        </div>
+        <div class="container-column">
+
+        </div>
+        <div class="container-column">
+
+        </div>
+    </div>
+</section>
+
 <div th:replace="~{base :: scripts}"></div>
 </body>
 </html>
