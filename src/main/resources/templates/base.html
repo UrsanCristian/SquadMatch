@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/styles/style.css}">
-    <title th:text="${title}">Title</title>
+    <title th:text="${title}"></title>
 </head>
 <body>
 <nav th:fragment="nav-bar" class="nav">
@@ -14,7 +14,7 @@
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
                 <li><a th:href="@{/}">How it works</a></li>
-                <li><a th:href="@{/}">Matches</a></li>
+                <li><a th:href="@{/matches}">Matches</a></li>
                 <li><a th:href="@{/}">Locations</a></li>
                 <li><a th:href="@{/}">Players</a></li>
                 <li><a th:href="@{/}">Login</a></li>
