@@ -4,12 +4,16 @@
 </head>
 <body>
 <nav th:replace="~{base :: nav-bar}"></nav>
+<section id="hero-lobby">
+</section>
 <section id="match-list">
-    <div class="lobby" th:each="lobby : ${lobbies}">
-        <h3 class="p-title" th:text="${lobby.title}"></h3>
-        <p class="text" th:text="${lobby.creator}"></p>
-        <p class="text" th:text="${lobby.scheduledTime}"></p>
-        <p class="text" th:text="${lobby.location}"></p>
+    <div class="lobby-card" th:each="lobby : ${lobbies}">
+        <img class="card-img" th:src="${lobby.location.getImageUrl()}" alt="Location Image">
+        <h3 class="p-title"><span th:text="${lobby.title}"></span> by <span th:text="${lobby.creator.getUsername()}"></span></h3>
+        <p class="text">Scheduled on <span th:text="${{lobby.scheduledTime}}"></span></p>
+        <p class="text">Location: <span th:text="${lobby.location.getStadium()}"></span></p>
+        <a class="btn" th:href="@{/matches/${lobby.id}}">View Lobby</a>
     </div>
 </section>
+<div th:replace="~{base :: scripts}"></div>
 </body>
