@@ -49,7 +49,7 @@
                 <div>
                     <span class="step">Step 3.</span>
                     <span class="step-text">
-                            Visit <a class="text-link" href="">Matches</a> page to create or join a lobby.
+                            Visit <a class="text-link" th:href="@{/matches}">Matches</a> page to create or join a lobby.
                         </span>
                 </div>
                 <div>
@@ -74,17 +74,17 @@
     <div class="container-row space-even">
         <div class="container-column centered stats-width stats-margins">
             <img class="icon-xl" th:src="@{/icons/matches-icon.png}" alt="Matches Icon">
-            <span class="big-number">10</span>
+            <span class="big-number" th:text="${lobbiesCount}"></span>
             <span class="stats-text">Matches Created</span>
         </div>
         <div class="container-column centered stats-width stats-margins">
             <img class="icon-xl" th:src="@{/icons/players-icon.png}" alt="Players Icon">
-            <span class="big-number">100</span>
+            <span class="big-number" th:text="${usersCount}"></span>
             <span class="stats-text">Active Players</span>
         </div>
         <div class="container-column centered stats-width stats-margins">
             <img class="icon-xl" th:src="@{/icons/locations-icon.png}" alt="Locations Icon">
-            <span class="big-number">5</span>
+            <span class="big-number" th:text="${locationsCount}"></span>
             <span class="stats-text">Verified Locations</span>
         </div>
         <div class="container-column">
