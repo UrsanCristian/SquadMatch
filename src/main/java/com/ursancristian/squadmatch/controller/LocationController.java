@@ -2,6 +2,7 @@ package com.ursancristian.squadmatch.controller;
 
 import com.ursancristian.squadmatch.model.Location;
 import com.ursancristian.squadmatch.repository.LocationRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class LocationController {
 
-    @Autowired
-    private LocationRepository locationRepository;
+    private final LocationRepository locationRepository;
 
     @GetMapping("/locations")
     public String locationList(Model model) {

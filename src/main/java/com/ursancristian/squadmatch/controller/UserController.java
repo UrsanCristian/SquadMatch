@@ -2,6 +2,7 @@ package com.ursancristian.squadmatch.controller;
 
 import com.ursancristian.squadmatch.model.User;
 import com.ursancristian.squadmatch.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserRepository userRepository;
 
     @GetMapping("/players")
     public String userList(Model model) {
