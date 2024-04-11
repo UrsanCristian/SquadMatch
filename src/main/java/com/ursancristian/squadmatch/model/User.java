@@ -33,7 +33,7 @@ public class User {
 
     private Boolean isAdmin = false;
 
-    private String pictureUrl = "https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?t=st=1712676712~exp=1712680312~hmac=51fbdfaa0fb06aeabb092b76d3397a2a68a7feab4692fe7df72a4af630d78d92&w=826";
+    private String pictureUrl = "https://i.imgur.com/afUEk7n.png";
 
     private int wins = 0;
 
