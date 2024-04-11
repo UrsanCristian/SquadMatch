@@ -230,6 +230,11 @@ body {
     width: 80px;
 }
 
+.icon-md {
+    height: 50px;
+    width: 50px;
+}
+
 .big-number {
     font-size: 4rem;
 }
@@ -249,8 +254,8 @@ body {
     background-size:cover;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /*align-items: center;*/
+    /*justify-content: center;*/
     color: #fff;
 }
 
@@ -294,6 +299,49 @@ body {
     background-color: #46eaec;
     color: #111111;
     font-weight: bold;
+}
+
+/*Lobby Details Page*/
+.inline {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+#lobby-details {
+    color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+}
+
+.lobby-title {
+    align-self: center;
+    border-bottom: 3px solid #46eaec;
+    padding: 0 0.7rem 0.2rem 0.7rem;
+}
+
+.lobby-info {
+    gap: 3rem;
+}
+
+.info-text {
+    margin: 1rem 0 1rem 1rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-right {
+    width: 100%;
+    margin: 1rem 1rem 1rem 0;
+}
+
+.team {
+    width: 50%;
 }
 
 

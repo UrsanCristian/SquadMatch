@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{base :: head}">
+</head>
+
+<body>
+<nav th:replace="~{base :: nav-bar}"></nav>
+<section id="hero-lobby">
+</section>
+<section id=lobby-details>
+    <h2 class="lobby-title"><span th:text="${lobby.title}"></span> by <span
+            th:text="${lobby.creator.getUsername()}"></span></h2>
+    <div class="lobby-info inline">
+        <div class="info-left">
+            <img class="image size-medium" th:src="${lobby.location.getImageUrl()}" alt="">
+            <div class="info-text inline">
+                <img class="icon-md" th:src="@{/icons/clock.png}" alt="Clock Icon">
+                <span>Schedule: <span class="location-data" th:text="${{lobby.getScheduledTime()}}"></span></span>
+            </div>
+            <div class="info-text inline">
+                <img class="icon-md" th:src="@{/icons/location.png}" alt="Location Pin Icon">
+                <span class="location-data" th:text="${lobby.getLocation().getStadium()}"></span>
+            </div>
+            <div class="info-text inline">
+                <img class="icon-md" th:src="@{/icons/search.png}" alt="Location Pin Icon">
+                <span class="location-data" th:text="${lobby.getLocation().getAddress()}"></span>
+            </div>
+        </div>
+
+        <div class="info-right inline">
+            <div class="team column">
+                <h3 class="p-title" style="align-self: center">TEAM 1</h3>
+                <div class="players-list column" th:each="player : ${lobby.getTeam1()}">
+                    <div class="player">
+
+                    </div>
+                </div>
+            </div>
+            <div class="team column">
+                <h3 class="p-title" style="align-self: center">TEAM 2</h3>
+                <div class="players-list column">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<div th:replace="~{base :: scripts}"></div>
+</body>
+</html>
