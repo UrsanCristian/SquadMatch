@@ -20,3 +20,9 @@ INSERT INTO public.lobby(
 			(3, true, 12, '2022-12-31 23:59:59', 'Third Match', 3, 1),
 			(4, true, 12, '2022-12-31 23:59:59', 'Fourth Match', 4, 1);
 
+#Teams
+
+INSERT INTO public.lobby_team1(lobby_teams1_id, team1_id) VALUES (1, 1), (1, 2);
+
+INSERT INTO public.lobby_team2(lobby_teams2_id, team2_id) VALUES (1, 3), (1, 4);
+
