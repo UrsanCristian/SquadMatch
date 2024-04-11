@@ -29,17 +29,47 @@
 
         <div class="info-right inline">
             <div class="team column">
-                <h3 class="p-title" style="align-self: center">TEAM 1</h3>
+                <span class="team-title">TEAM 1</span>
+                <span class="players-count">
+                    <span th:text="${lobby.getTeam2().size()}"></span>
+                    /
+                    <span th:text="${(lobby.getMaxPlayers()) / 2}"></span>
+                </span>
                 <div class="players-list column" th:each="player : ${lobby.getTeam1()}">
                     <div class="player">
-
+                        <img class="icon-md" th:src="${player.getPictureUrl()}" alt="Player Avatar">
+                        <span th:text="${player.getUsername()}"></span>
+                        <span class="inline" style="align-items: center; gap: 0.2rem">
+                            <span th:text="${player.averageBehavior()}"></span>
+                            <img class="icon-sm" th:src="@{/icons/behavior.png}" alt="Behavior Rating">
+                        </span>
+                        <span class="inline" style="align-items: center; gap: 0.2rem">
+                            <span th:text="${player.averageSkills()}"></span>
+                            <img class="icon-sm" th:src="@{/icons/skill.png}" alt="Skill Rating">
+                        </span>
                     </div>
                 </div>
             </div>
             <div class="team column">
-                <h3 class="p-title" style="align-self: center">TEAM 2</h3>
-                <div class="players-list column">
-
+                <span class="team-title">TEAM 2</span>
+                <span class="players-count">
+                    <span th:text="${lobby.getTeam2().size()}"></span>
+                    /
+                    <span th:text="${(lobby.getMaxPlayers()) / 2}"></span>
+                </span>
+                <div class="players-list column" th:each="player : ${lobby.getTeam2()}">
+                    <div class="player" style="justify-items: end">
+                        <span class="inline" style="align-items: center; gap: 0.2rem">
+                            <img class="icon-sm" th:src="@{/icons/skill.png}" alt="Skill Rating">
+                            <span th:text="${player.averageSkills()}"></span>
+                        </span>
+                        <span class="inline" style="align-items: center; gap: 0.2rem">
+                            <img class="icon-sm" th:src="@{/icons/behavior.png}" alt="Behavior Rating">
+                            <span th:text="${player.averageBehavior()}"></span>
+                        </span>
+                        <span th:text="${player.getUsername()}"></span>
+                        <img class="icon-md" th:src="${player.getPictureUrl()}" alt="Player Avatar">
+                    </div>
                 </div>
             </div>
         </div>
