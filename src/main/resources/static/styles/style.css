@@ -380,6 +380,82 @@ body {
 }
 
 
+/*Login Page*/
+
+.form-container {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    width: 40%;
+    height: 70vh;
+    background-image: linear-gradient(to bottom, #31363F, #222831);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+}
+
+.login-title {
+    color: azure;
+    margin: 3rem 0;
+    font-size: 2rem;
+}
+
+.input {
+    margin: 0.5rem 0;
+    padding: 1rem 0.5rem;
+    width: 80%;
+    background-color: inherit;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.username {
+    border-bottom: 1px solid #46eaec;
+    transition: all 400ms;
+}
+
+.username:focus {
+    background-color: #222831;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.password {
+    border-bottom: 1px solid #46eaec;
+    transition: all 400ms;
+}
+
+.password:focus {
+    background-color: #222831;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.btn-glow {
+    height: 3rem;
+    width: 60%;
+    margin-top: 3rem;
+    background-color: #46eaec;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1.2rem;
+    transition: all 400ms;
+    box-shadow: 0 0 10px #76ABAE, 0 0 10px #76ABAE;
+}
+
+.btn-glow:hover {
+    background-color: #76ABAE;
+    box-shadow: none;
+}
+
+
 /* Media query section */
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
