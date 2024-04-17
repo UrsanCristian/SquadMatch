@@ -9,28 +9,19 @@
 </section>
 
 <section>
-    <!--    <h1>Login</h1>-->
-    <!--    <form th:action="@{/login-submit}" method="post">-->
-    <!--        <div>-->
-    <!--            <input type="text" name="username" placeholder="Username"/>-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--            <input type="password" name="password" placeholder="Password"/>-->
-    <!--        </div>-->
-    <!--        <input type="submit" value="Login"/>-->
-    <!--    </form>-->
 
     <div class="form-container">
         <form class="login-form" th:action="@{/login-submit}" method="post">
-            <p class="login-title">Login</p>
+            <p class="login-title">Login to your account</p>
             <input placeholder="Username" class="username input" type="text" name="username" autocomplete="off">
             <input placeholder="Password" class="password input" type="password" name="password" autocomplete="off">
             <button class="btn-glow" type="submit">Login</button>
+
+            <span class="step-text" style="color: azure">
+                Don't have an account?<a class="text-link" th:href="@{/register}" style="margin-left: 1rem">Register</a>
+            </span>
         </form>
 
-        <span class="step-text" style="color: azure">
-            Don't have an account?<a class="text-link" th:href="@{/register}" style="margin-left: 1rem">Register</a>
-        </span>
     </div>
 </section>
 

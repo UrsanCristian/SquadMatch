@@ -23,6 +23,7 @@ public class LobbyController {
         model.addAttribute("lobbies", lobbies);
         return "lobby_list";
     }
+
     @GetMapping("/matches/{id}")
     public String lobbyDetails(Model model, @PathVariable int id) {
         Lobby lobby = lobbyRepository.findById(id).orElse(null);
