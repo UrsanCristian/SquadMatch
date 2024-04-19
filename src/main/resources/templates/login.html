@@ -8,11 +8,11 @@
 <section id="hero-lobby" class="centered">
 </section>
 
-<section>
+<section id="login">
 
     <div class="form-container">
-        <form class="login-form" th:action="@{/login-submit}" method="post">
-            <p class="login-title">Login to your account</p>
+        <form class="custom-form" th:action="@{/login-submit}" method="post">
+            <p class="form-title">Login to your account</p>
             <input placeholder="Username" class="username input" type="text" name="username" autocomplete="off">
             <input placeholder="Password" class="password input" type="password" name="password" autocomplete="off">
             <button class="btn-glow" type="submit">Login</button>
@@ -21,8 +21,8 @@
                 Don't have an account?<a class="text-link" th:href="@{/register}" style="margin-left: 1rem">Register</a>
             </span>
         </form>
-
     </div>
+
 </section>
 
 

@@ -6,6 +6,7 @@ import com.ursancristian.squadmatch.model.User;
 import com.ursancristian.squadmatch.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,15 +18,15 @@ public class UserService implements IUserService {
 
     @Override
     public User registerNewUserAccount(UserDTO userDto) throws UserAlreadyExistException {
-        if (emailExists(userDto.getEmail())) {
-            throw new UserAlreadyExistException("There is an account with that email address: "
-                    + userDto.getEmail());
+        if (usernameExists(userDto.getUsername())) {
+            throw new UserAlreadyExistException("There is an account with that username: "
+                    + userDto.getUsername());
         }
 
         User user = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(new BCryptPasswordEncoder().encode(userDto.getPassword()));
         user.setEmail(userDto.getEmail());
         user.setUsername(userDto.getUsername());
 
@@ -34,5 +35,9 @@ public class UserService implements IUserService {
 
     private boolean emailExists(String email) {
         return repository.findByEmail(email) != null;
+    }
+
+    private boolean usernameExists(String username) {
+        return repository.findByUsername(username) != null;
     }
 }

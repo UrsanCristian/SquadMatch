@@ -6,10 +6,15 @@
 <nav th:replace="~{base :: nav-bar}"></nav>
 <section id="hero-lobby" class="centered">
 </section>
+<div class="inline centered" th:if="${lobbies.isEmpty()}" style="height: 80vh;">
+    <h2 class="heroText" style="">No Lobbies Found. Please Try Again Later</h2>
+</div>
 <section id="match-list">
+
     <div class="lobby-card" th:each="lobby : ${lobbies}">
         <img class="card-img" th:src="${lobby.location.getImageUrl()}" alt="Location Image">
-        <h3 class="p-title"><span th:text="${lobby.title}"></span> by <span th:text="${lobby.creator.getUsername()}"></span></h3>
+        <h3 class="p-title"><span th:text="${lobby.title}"></span> by <span
+                th:text="${lobby.creator.getUsername()}"></span></h3>
         <p class="text">Scheduled on <span th:text="${{lobby.getScheduledTime()}}"></span></p>
         <p class="text">Location: <span th:text="${lobby.location.getStadium()}"></span></p>
         <a class="btn" th:href="@{/matches/{id}(id = ${lobby.id})}">View Lobby</a>

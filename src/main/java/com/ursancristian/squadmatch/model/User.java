@@ -20,7 +20,8 @@ import java.util.List;
 @NoArgsConstructor
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "users_id_seq")
+    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", initialValue = 5, allocationSize = 1)
     private int id;
     @NotNull
     @NotEmpty
@@ -37,6 +38,8 @@ public class User implements UserDetails {
     @NotNull
     @NotEmpty
     private String email;
+
+    private String role = "USER";
 
     private Boolean isActive = true;
 
@@ -101,5 +104,9 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return this.isActive;
+    }
+
+    public List<String> getRoles() {
+        return List.of(this.role);
     }
 }

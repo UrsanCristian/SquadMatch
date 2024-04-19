@@ -3,18 +3,16 @@ package com.ursancristian.squadmatch.validators;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-@Target({TYPE, ANNOTATION_TYPE})
-@Retention(RUNTIME)
-@Constraint(validatedBy = PasswordMatchValidator.class)
+//@Target({TYPE, ANNOTATION_TYPE})
+//@Retention(RUNTIME)
+//@Constraint(validatedBy = PasswordMatchValidator.class)
+//@Documented
 @Documented
+@Constraint(validatedBy = PasswordMatchValidator.class)
+@Target( { ElementType.METHOD, ElementType.FIELD, ElementType.TYPE })
+@Retention(RetentionPolicy.RUNTIME)
 public @interface PasswordMatch {
     String message() default "Passwords don't match";
 
