@@ -7,44 +7,40 @@
 <nav th:replace="~{base :: nav-bar}"></nav>
 <section id="hero-lobby" class="centered">
 </section>
-<form action="/register-submit" th:object="${user}" method="POST">
-    <div>
-        <input th:field="*{firstName}"/>
-        <p th:each="error: ${#fields.errors('firstName')}"
-           th:text="${error}">Validation error</p>
-    </div>
-    <div>
-        <input th:field="*{lastName}"/>
-        <p th:each="error : ${#fields.errors('lastName')}"
-           th:text="${error}">Validation error</p>
-    </div>
-    <div>
-        <input th:field="*{username}"/>
-        <p th:each="error : ${#fields.errors('username')}"
-           th:text="${error}">Validation error</p>
-    </div>
-    <div>
-        <input type="email" th:field="*{email}"/>
-        <p th:each="error : ${#fields.errors('email')}"
-           th:text="${error}">Validation error</p>
-    </div>
-    <div>
-        <input type="password" th:field="*{password}"/>
-        <p th:each="error : ${#fields.errors('password')}"
-           th:text="${error}">Validation error</p>
-    </div>
-    <div>
-        <input type="password" th:field="*{matchingPassword}"/>
-        <p th:each="error : ${#fields.errors('matchingPassword')}"
-           th:text="${error}">Validation error</p>
-    </div>
-    <button type="submit" >submit</button>
-</form>
+
+<section id="register">
+    <div class="form-container">
+        <form class="custom-form" style="height: 100%" th:action="@{/register-submit}" th:object="${user}"
+              method="POST">
+            <p class="form-title">Register New Account</p>
+
+            <input class="input custom-input" th:field="*{firstName}" placeholder="First Name"/>
 
 
+            <input class="input custom-input" th:field="*{lastName}" placeholder="Last Name"/>
 
+
+            <input class="input custom-input" th:field="*{username}" placeholder="Username"/>
+
+
+            <input class="input custom-input" type="email" th:field="*{email}" placeholder="E-mail"/>
+
+
+            <input class="input custom-input" type="password" th:field="*{password}" placeholder="Password"/>
+
+
+            <input class="input custom-input" type="password" th:field="*{matchingPassword}"
+                   placeholder="Repeat Password"/>
+
+
+            <div class="form-error" th:if="${message}" th:text="${message}"></div>
+
+            <button class="btn-glow" type="submit" style="margin-top: 2rem">Register</button>
+        </form>
+    </div>
+</section>
 
 
 <div th:replace="~{base :: scripts}"></div>
-</body>>
+</body>
 </html>
