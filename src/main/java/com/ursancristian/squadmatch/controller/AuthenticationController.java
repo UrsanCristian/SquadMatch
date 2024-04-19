@@ -9,7 +9,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +35,7 @@ public class AuthenticationController {
 
     @GetMapping("/register")
     public String register(WebRequest request, Model model) {
+        System.out.println("loading registration page");
         UserDTO userDto = new UserDTO();
         model.addAttribute("title", "Register");
         model.addAttribute("user", userDto);
@@ -44,18 +45,22 @@ public class AuthenticationController {
     @PostMapping("/register-submit")
     public ModelAndView registerUserAccount(
             @ModelAttribute("user") @Valid UserDTO userDto,
-            HttpServletRequest request,
-            Errors errors) {
-
+            BindingResult result,
+            HttpServletRequest request) {
         ModelAndView mav = new ModelAndView();
-
-        try {
-            User registered = userService.registerNewUserAccount(userDto);
-        } catch (UserAlreadyExistException uaeEx) {
-            mav.addObject("message", "An account for that username/email already exists.");
-            return mav;
+        if (result.hasErrors()) {
+            mav.setViewName("registration");
+            mav.addObject("message", result.getAllErrors().get(0).getDefaultMessage());
+        } else {
+            try {
+                User registered = userService.registerNewUserAccount(userDto);
+                mav.setViewName("redirect:/login");
+            } catch (UserAlreadyExistException uaeEx) {
+                mav.addObject("message", "An account for that username/email already exists.");
+                mav.setViewName("registration");
+            }
         }
-
-        return new ModelAndView("redirect:/login", "user", userDto);
+        mav.addObject("user", userDto);
+        return mav;
     }
 }
