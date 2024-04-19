@@ -390,7 +390,7 @@ body {
     align-items: center;
 }
 
-.login-form {
+.custom-form {
     width: 40%;
     height: 500px;
     background-image: linear-gradient(to bottom, #31363F, #222831);
@@ -400,7 +400,7 @@ body {
     border-radius: 30px;
 }
 
-.login-title {
+.form-title {
     color: azure;
     margin: 3rem 0;
     font-size: 2rem;
@@ -415,6 +415,18 @@ body {
     border: none;
     outline: none;
 }
+
+.custom-input {
+    border-bottom: 1px solid #46eaec;
+    transition: all 400ms;
+}
+
+.custom-input:focus {
+    background-color: #222831;
+    border: none;
+    border-radius: 0.5rem;
+}
+
 
 .username {
     border-bottom: 1px solid #46eaec;
@@ -454,6 +466,11 @@ body {
 .btn-glow:hover {
     background-color: #46eaec;
     box-shadow: 0 0 10px #76ABAE, 0 0 10px #76ABAE;
+}
+
+.form-error {
+    margin-top: 1rem;
+    color: #ffffff;
 }
 
 
