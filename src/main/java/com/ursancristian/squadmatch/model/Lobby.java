@@ -15,7 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Lobby {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "lobby_id_seq")
+    @SequenceGenerator(name = "lobby_id_seq", sequenceName = "lobby_id_seq", initialValue = 1, allocationSize = 1)
     private int id;
 
     @ManyToOne

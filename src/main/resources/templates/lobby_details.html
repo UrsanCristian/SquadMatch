@@ -25,13 +25,24 @@
                 <img class="icon-md" th:src="@{/icons/search.png}" alt="Location Pin Icon">
                 <span class="location-data" th:text="${lobby.getLocation().getAddress()}"></span>
             </div>
+
+            <div class="info-text inline" th:if="${#sets.contains(lobby.getTeam1(), user) or #sets.contains(lobby.getTeam2(), user)}">
+                <form class="inline centered" style="width: 100%" th:action="@{/matches/leave/{lobbyId}(lobbyId=${lobby.id})}" method="post">
+                    <button class="btn-lobby" type="submit">Leave Lobby</button>
+                </form>
+            </div>
+            <div th:if="${!#sets.contains(lobby.getTeam1(), user) and !#sets.contains(lobby.getTeam2(), user)}">
+                <form class="inline centered" th:action="@{/matches/join/{lobbyId}(lobbyId=${lobby.id})}" method="post">
+                    <button class="btn-lobby" type="submit">Join Lobby</button>
+                </form>
+            </div>
         </div>
 
         <div class="info-right inline">
             <div class="team column">
                 <span class="team-title">TEAM 1</span>
                 <span class="players-count">
-                    <span th:text="${lobby.getTeam2().size()}"></span>
+                    <span th:text="${lobby.getTeam1().size()}"></span>
                     /
                     <span th:text="${(lobby.getMaxPlayers()) / 2}"></span>
                 </span>
