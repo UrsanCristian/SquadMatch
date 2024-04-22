@@ -306,6 +306,12 @@ body {
     font-weight: bold;
 }
 
+.btn-big {
+    width: 40%;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 /*Lobby Details Page*/
 .inline {
     display: flex;
@@ -377,6 +383,28 @@ body {
     margin-bottom: 1rem;
     padding-bottom: 0.4rem;
     border-bottom: 2px solid #1daae7;
+}
+.btn-lobby {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgb(45, 44, 109) 0%, rgb(31, 160, 216) 44%, rgba(0,212,255,1) 95%);
+    color: #fff;
+    width: 50%;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 15px;
+    padding: 0.4rem;
+    transition: 0.3s;
+}
+
+.btn-lobby:hover {
+    background: rgb(0,212,255);
+    background: linear-gradient(90deg, rgba(0,212,255,0.01) 0%, rgba(31,160,216,1) 39%, rgba(45,44,109,1) 93%);
+    color: #fff;
+    width: 50%;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 15px;
+    padding: 0.4rem;
 }
 
 
