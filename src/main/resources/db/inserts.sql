@@ -2,7 +2,7 @@
 INSERT INTO public.location(id, address, image_url, stadium)
 VALUES (1,
         'Strada Mareșal Constantin Prezan, Cluj-Napoca',
-        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fvisitcluj.ro%2Ftourist_spot%2Fbaza-sportiva-gheorgheni-2%2F&psig=AOvVaw3KAfwa4dhOP45zgFbGBcjS&ust=1712762495018000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJDmvdK3tYUDFQAAAAAdAAAAABAK',
+        'https://i.imgur.com/A4Jc6Zm.jpg',
         'Baza Sportiva Gheorgheni'
        );
 
