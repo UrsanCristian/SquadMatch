@@ -1,9 +1,6 @@
 package com.ursancristian.squadmatch.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Location {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "location_id_seq")
+    @SequenceGenerator(name = "location_id_seq", sequenceName = "location_id_seq", initialValue = 1, allocationSize = 1)
     private int id;
 
     private String stadium;

@@ -13,7 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Rating {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "rating_id_seq")
+    @SequenceGenerator(name = "rating_id_seq", sequenceName = "rating_id_seq", initialValue = 1, allocationSize = 1)
     private int id;
 
     @ManyToOne
