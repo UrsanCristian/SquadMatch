@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{base :: head}">
+</head>
+
+<body>
+<nav th:replace="~{base :: nav-bar}"></nav>
+<section id="hero-lobby" class="centered">
+</section>
+<section id="ratings-section">
+    <span class="form-title">Submitted Ratings</span>
+    <div class="ratings-closed inline" th:each="rating: ${lobbyRatings}">
+        <p th:text="${rating.getPlayerTo().getUsername()}"></p>
+        <p th:text="'Behavior:  ' + ${rating.getBehavior()}"></p>
+        <p th:text="'Skills:  ' + ${rating.getSkills()}"></p>
+        <!--        <a th:href="@{/ratings/{id}(id = ${lobby.getId()})}">View Ratings</a>-->
+    </div>
+
+    <div class="separator"></div>
+
+    <span class="form-title" style="margin-top: 1rem">Rate Players</span>
+    <form class="column" th:action="@{/ratings/{lobbyId}(lobbyId=${lobbyId})}" method="post">
+        <div class="ratings-open inline" th:each="user: ${nonRatedUsers}">
+            <label>Review for </label><label th:text="${user.getUsername()}"></label>
+            <input type="hidden" name="userIds[]" th:value="${user.getId()}">
+            <!--        <input type="number" name="behavior[]" >-->
+            <!--        <input type="number" name="skills[]" >-->
+            <select class="select-rating" name="behavior[]">
+                <option th:each="num : ${#numbers.sequence(1, 10)}" th:value="${num}" th:text="${num}"></option>
+            </select>
+
+            <select class="select-rating" name="skills[]">
+                <option th:each="num : ${#numbers.sequence(1, 10)}" th:value="${num}" th:text="${num}"></option>
+            </select>
+
+        </div>
+
+        <button class="btn-lobby" style="align-self: center" th:if="${nonRatedUsers.size() > 0}" type="submit">Submit Ratings</button>
+    </form>
+
+</section>
+<div th:replace="~{base :: scripts}"></div>
+</body>
+
+</html>

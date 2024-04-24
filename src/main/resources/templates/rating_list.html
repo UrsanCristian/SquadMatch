@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{base :: head}">
+</head>
+
+<body>
+<nav th:replace="~{base :: nav-bar}"></nav>
+<section id="hero-lobby" class="centered">
+</section>
+<section id="ratings-lobbies">
+    <span class="form-title">Your Lobbies</span>
+    <div class="inline separator" th:each="lobby: ${lobbies}">
+        <p class="p-title" style="color: #EEEEEE" th:text="${lobby.title}"></p>
+        <a class="btn" th:href="@{/ratings/{id}(id = ${lobby.getId()})}">View Ratings</a>
+    </div>
+</section>
+
+<div th:replace="~{base :: scripts}"></div>
+</body>
+</html>

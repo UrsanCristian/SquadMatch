@@ -401,7 +401,7 @@ body {
     background: linear-gradient(90deg, rgba(0,212,255,0.01) 0%, rgba(31,160,216,1) 39%, rgba(45,44,109,1) 93%);
     color: #fff;
     width: 50%;
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
     border: none;
     border-radius: 15px;
     padding: 0.4rem;
@@ -501,6 +501,82 @@ body {
     color: #ffffff;
 }
 
+/*Ratings Page*/
+
+#ratings-section {
+    display: flex;
+    flex-direction: column;
+    color: #EEEEEE;
+    align-items: center;
+}
+
+.separator {
+    border-bottom: 3px solid #1daae7;
+    width: 80%;
+    margin: 1rem 0 1rem 0;
+
+}
+
+.ratings-closed {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.1rem;
+    border-bottom: 2px solid #1daae7;
+    color: white;
+    width: 30%;
+}
+
+.ratings-open {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.1rem;
+    border-bottom: 2px solid #1daae7;
+    color: white;
+    width: 100%;
+}
+
+.ratings-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0 1rem 0;
+    width: 60%;
+}
+
+.select-rating {
+    width: 100%;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #31363F;
+    color: #fff;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1rem;
+    appearance: none;
+    outline: none;
+}
+
+.focus-rating {
+    box-shadow: 0 0 5px #76ABAE;
+}
+
+.select-rating option {
+    color: #222831;
+    background-color: #fff;
+}
+
+#ratings-lobbies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #EEEEEE;
+}
 
 /* Media query section */
 
