@@ -46,8 +46,6 @@ public class Lobby {
 
     @OneToMany(mappedBy = "lobby")
     private List<Rating> ratings;
-
-
 }
 
 

@@ -1,7 +1,6 @@
 package com.ursancristian.squadmatch.dto;
 
 import com.ursancristian.squadmatch.model.User;
-import com.ursancristian.squadmatch.repository.UserRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
