@@ -39,6 +39,9 @@ public class LobbyService {
                 .orElseThrow(
                         () -> new IllegalArgumentException("Invalid location id"))
         );
+
+        lobby.getTeam1().add(creator);
+
         return lobbyRepository.save(lobby);
     }
 
@@ -58,6 +61,7 @@ public class LobbyService {
 
 
         if (lobby.getTeam1().size() + lobby.getTeam2().size() >= lobby.getMaxPlayers()) {
+//            lobby.setIsOpen(false);
             throw new IllegalArgumentException("Lobby is full");
         }
 

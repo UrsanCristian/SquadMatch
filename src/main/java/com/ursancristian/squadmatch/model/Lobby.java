@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,10 +32,10 @@ public class Lobby {
     private Location location;
 
     @ManyToMany
-    private List<User> team1;
+    private List<User> team1 = new ArrayList<>();
 
     @ManyToMany
-    private List<User> team2;
+    private List<User> team2 = new ArrayList<>();
 
     private Boolean isOpen = true;
 
@@ -46,6 +47,7 @@ public class Lobby {
 
     @OneToMany(mappedBy = "lobby")
     private List<Rating> ratings;
+
 }
 
 

@@ -79,7 +79,7 @@ public class LobbyController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username;
         if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
+            username = ((UserDetails) principal).getUsername();
         } else {
             username = principal.toString();
         }
@@ -94,7 +94,7 @@ public class LobbyController {
 
         Lobby lobby = lobbyService.createLobby(lobbyDto, username);
 
-        return "redirect:/matches";
+        return "redirect:/matches/" + lobby.getId();
     }
 
     @PostMapping("/matches/join/{lobbyId}")
@@ -108,6 +108,24 @@ public class LobbyController {
     public String leaveLobby(@PathVariable int lobbyId, Principal principal) {
         String username = principal.getName();
         lobbyService.leaveLobby(lobbyId, username);
+
+        Lobby lobby = lobbyRepository.findById(lobbyId).orElse(null);
+        if (lobby != null) {
+            if (username.equals(lobby.getCreator().getUsername())) {
+                if (!lobby.getTeam1().isEmpty()) {
+                    lobby.setCreator(lobby.getTeam1().get(0));
+                } else if (!lobby.getTeam2().isEmpty()) {
+                    lobby.setCreator(lobby.getTeam2().get(0));
+                } else {
+                    lobbyRepository.delete(lobby);
+                    return "redirect:/matches";
+                }
+                lobbyRepository.save(lobby);
+            } else if (lobby.getTeam1().isEmpty() && lobby.getTeam2().isEmpty()) {
+                lobbyRepository.delete(lobby);
+            }
+        }
+
         return "redirect:/matches";
     }
 
