@@ -9,8 +9,8 @@
 </section>
 <section id="ratings-lobbies">
     <span class="form-title">Your Lobbies</span>
-    <div class="inline separator" th:each="lobby: ${lobbies}">
-        <p class="p-title" style="color: #EEEEEE" th:text="${lobby.title}"></p>
+    <div class="inline separator" style="justify-content: space-between" th:each="lobby: ${lobbies}">
+        <p class="p-title" style="color: #EEEEEE" th:text="${lobby.title} + ' ' + 'by' + ' ' + ${lobby.getCreator().getUsername()}"></p>
         <a class="btn" th:href="@{/ratings/{id}(id = ${lobby.getId()})}">View Ratings</a>
     </div>
 </section>
