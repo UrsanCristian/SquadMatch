@@ -61,7 +61,6 @@ public class LobbyService {
 
 
         if (lobby.getTeam1().size() + lobby.getTeam2().size() >= lobby.getMaxPlayers()) {
-//            lobby.setIsOpen(false);
             throw new IllegalArgumentException("Lobby is full");
         }
 
@@ -70,6 +69,10 @@ public class LobbyService {
             lobby.getTeam1().add(user);
         } else {
             lobby.getTeam2().add(user);
+        }
+
+        if (lobby.getTeam1().size() + lobby.getTeam2().size() == lobby.getMaxPlayers()) {
+            lobby.setIsOpen(false);
         }
 
         return lobbyRepository.save(lobby);

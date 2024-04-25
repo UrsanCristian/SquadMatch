@@ -33,6 +33,7 @@ public class RatingService {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = (User) principal;
         List<Lobby> userLobbies = lobbyRepository.findAllByCreatorOrTeam1ContainsOrTeam2Contains(user, List.of(user), List.of(user));
+        userLobbies.removeIf(Lobby::getIsOpen);
 //        System.out.println(userLobbies);
         return userLobbies;
     }

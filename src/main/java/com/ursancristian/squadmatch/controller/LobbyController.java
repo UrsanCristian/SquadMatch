@@ -34,6 +34,7 @@ public class LobbyController {
     @GetMapping("/matches")
     public String lobbyList(Model model) {
         List<Lobby> lobbies = lobbyRepository.findAll();
+        lobbies.removeIf(lobby -> !lobby.getIsOpen());
         model.addAttribute("title", "Matches");
         model.addAttribute("lobbies", lobbies);
         return "lobby_list";
