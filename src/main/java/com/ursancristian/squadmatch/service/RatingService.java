@@ -8,10 +8,8 @@ import com.ursancristian.squadmatch.repository.RatingRepository;
 import com.ursancristian.squadmatch.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +24,7 @@ public class RatingService {
 
     public List<Rating> getAllRatingsDone() {
         List<Rating> result = ratingRepository.findAll();
-        System.out.println(result);
+//        System.out.println(result);
         return result;
     }
 
@@ -35,14 +33,14 @@ public class RatingService {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = (User) principal;
         List<Lobby> userLobbies = lobbyRepository.findAllByCreatorOrTeam1ContainsOrTeam2Contains(user, List.of(user), List.of(user));
-        System.out.println(userLobbies);
+//        System.out.println(userLobbies);
         return userLobbies;
     }
 
     public List<User> getRatedUsers(int lobbyId) {
         List<Rating> lobbyRatings = getLobbyRatings(lobbyId);
         List<User> ratedUsers = lobbyRatings.stream().map(Rating::getPlayerTo).toList();
-        System.out.println(ratedUsers);
+//        System.out.println(ratedUsers);
         return ratedUsers;
     }
 
@@ -55,23 +53,23 @@ public class RatingService {
     }
 
     public List<User> getNonRatedUsers(int lobbyId) {
-        List<User> ratedUsers = new ArrayList<>(getRatedUsers(lobbyId));
+        List<Integer> ratedUserIds = new ArrayList<>(getRatedUsers(lobbyId).stream()
+                .map(User::getId).toList());
         Lobby lobby = lobbyRepository.findById(lobbyId).orElseThrow(() -> new IllegalArgumentException("Invalid lobby id"));
+        System.out.println("ratedUserIds=" + ratedUserIds);
         List<User> allPlayers = lobby.getTeam1();
         allPlayers.addAll(lobby.getTeam2());
+        System.out.println("allPlayers=" + allPlayers);
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userMe = (User) principal;
-        System.out.println(userMe);
-        ratedUsers.add(userMe);
+        ratedUserIds.add(userMe.getId());
+        System.out.println("userMe=" + userMe);
+        System.out.println("ratedUserIds=" + ratedUserIds);
+
         List<User> nonRatedUsers = allPlayers.stream()
-                .map(User::getId)
-                .filter(userId -> !ratedUsers.stream()
-                        .map(User::getId)
-                        .toList()
-                        .contains(userId))
-                .map(userId->userRepository.findById(userId).orElse(null))
+                .filter(user -> !ratedUserIds.contains(user.getId()))
                 .toList();
-        System.out.println(nonRatedUsers);
+        System.out.println("nonRatedUsers=" + nonRatedUsers);
         return nonRatedUsers;
     }
 
