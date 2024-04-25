@@ -50,8 +50,8 @@ public class RatingController {
 
         ratingService.rateUser(lobbyId, userIds, behavior, skills);
 
-
         return "redirect:/ratings/" + lobbyId;
+
     }
 
 }

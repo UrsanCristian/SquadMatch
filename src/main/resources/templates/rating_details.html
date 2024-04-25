@@ -26,10 +26,12 @@
             <!--        <input type="number" name="behavior[]" >-->
             <!--        <input type="number" name="skills[]" >-->
             <select class="select-rating" name="behavior[]">
+                <option value="-1"  selected>Behavior Score</option>
                 <option th:each="num : ${#numbers.sequence(1, 10)}" th:value="${num}" th:text="${num}"></option>
             </select>
 
             <select class="select-rating" name="skills[]">
+                <option value="-1" selected>Skill Score</option>
                 <option th:each="num : ${#numbers.sequence(1, 10)}" th:value="${num}" th:text="${num}"></option>
             </select>
 

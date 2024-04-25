@@ -93,6 +93,11 @@ public class RatingService {
         System.out.println("skills: " + Arrays.toString(skills));
 
         for (int i = 0; i < userIds.length; i++) {
+
+            if (behavior[i] == -1 || skills[i] == -1) {
+                continue;
+            }
+
             int playerToId = userIds[i];
             int behaviorRating = behavior[i];
             int skillsRating = skills[i];
