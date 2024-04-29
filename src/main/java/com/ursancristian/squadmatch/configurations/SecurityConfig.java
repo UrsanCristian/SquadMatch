@@ -1,5 +1,6 @@
 package com.ursancristian.squadmatch.configurations;
 
+import com.ursancristian.squadmatch.exceptions.CustomAuthenticationFailureHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,9 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+
+
+    private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -40,13 +44,15 @@ public class SecurityConfig {
                         .requestMatchers("/register-submit").permitAll()
                         .requestMatchers("/matches").permitAll()
                         .requestMatchers("/players").permitAll()
+                        .requestMatchers("/lobbies").permitAll()
+                        .requestMatchers("/locations/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login-submit")
                         .defaultSuccessUrl("/", true)
-                        .failureUrl("/login")
+                        .failureHandler(customAuthenticationFailureHandler)
                         .permitAll()
                 )
                 .logout(logout -> logout

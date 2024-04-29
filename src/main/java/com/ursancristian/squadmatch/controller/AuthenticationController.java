@@ -5,6 +5,7 @@ import com.ursancristian.squadmatch.exceptions.UserAlreadyExistException;
 import com.ursancristian.squadmatch.model.User;
 import com.ursancristian.squadmatch.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,12 @@ public class AuthenticationController {
     private final UserService userService;
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, HttpSession session) {
+        if (session.getAttribute("errorMessage") != null) {
+            model.addAttribute("errorMessage", session.getAttribute("errorMessage"));
+            session.removeAttribute("errorMessage");
+        }
+
         model.addAttribute("title", "Login");
         return "login";
     }

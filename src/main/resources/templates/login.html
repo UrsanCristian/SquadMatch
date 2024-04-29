@@ -15,7 +15,9 @@
             <p class="form-title">Login to your account</p>
             <input placeholder="Username" class="username input" type="text" name="username" autocomplete="off">
             <input placeholder="Password" class="password input" type="password" name="password" autocomplete="off">
-            <button class="btn-glow" type="submit">Login</button>
+
+            <span th:if="${param.error}" style="color: azure; margin-top: 0.5rem">Wrong username or password</span>
+            <button class="btn btn-mid" type="submit">Login</button>
 
             <span class="step-text" style="color: azure">
                 Don't have an account?<a class="text-link" th:href="@{/register}" style="margin-left: 1rem">Register</a>
@@ -28,5 +30,5 @@
 
 <div th:replace="~{base :: scripts}"></div>
 </body>
->
+
 </html>
