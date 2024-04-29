@@ -6,8 +6,15 @@
 <nav th:replace="~{base :: nav-bar}"></nav>
 <section id="hero-lobby" class="centered">
 </section>
-<div class="inline centered">
+
+
+
+<div class="inline centered" style="margin-top: 1.5rem;">
     <a class="btn btn-big" th:href="@{/matches/create-lobby}">Create New Lobby</a>
+</div>
+
+<div class="inline centered">
+    <h2 class="section-title">Explore Lobbies</h2>
 </div>
 
 <div class="inline centered" th:if="${lobbies.isEmpty()}" style="height: 80vh;">
