@@ -5,8 +5,29 @@
 
 <body>
 <nav th:replace="~{base :: nav-bar}"></nav>
+<section id="hero-lobby" class="centered">
+</section>
+
+<section id="locationSection">
+
+    <div class="location-details inline centered">
+        <div class="location-left">
+            <img th:src="${location.getImageUrl()}" alt="Location Image">
+        </div>
+        <div class="location-right">
+            <h2 class="team-title" th:text="${location.getStadium()}"></h2>
+            <p class="info-text" th:if="${location.getDescription() == null}">No Description for this location.</p>
+            <p class="info-text" th:text="${location.getDescription()}"></p>
+            <div class="info-text inline">
+                <img class="icon-md" th:src="@{/icons/location.png}" alt="Location Pin Icon">
+                <span class="location-data" th:text="${location.getAddress()}"></span>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
 <div th:replace="~{base :: scripts}"></div>
-</body>>
+</body>
 </html>

@@ -391,6 +391,15 @@ body {
     padding: 1rem 1.5rem 1rem 1.5rem;
 }
 
+.section-title {
+    align-self: center;
+    padding: 0.5rem 0.7rem 0.2rem 0.7rem;
+    font-size: 2rem;
+    margin: 2rem 0.5rem 1rem 0.5rem;
+    border-bottom: 3px solid #1daae7;
+}
+
+
 .lobby-title {
     align-self: center;
     border-bottom: 3px solid #1daae7;
@@ -638,7 +647,7 @@ body {
     color: #EEEEEE;
 }
 
-/*Locations Page*/
+/*Locations List Page*/
 
 .grid-list {
     display: grid;
@@ -689,6 +698,29 @@ body {
 
 .location-card:hover .overlay {
     opacity: 1;
+}
+
+/*Location Details Page*/
+
+.location-details {
+    margin: 3rem 1rem 1rem 1rem;
+    height: 80vh;
+}
+
+.location-left {
+    width: 50%;
+    height: 80%;
+}
+
+.location-left img {
+    width: 80%;
+    height: 80%;
+    border-radius: 30px;
+}
+
+.location-right {
+    width: 40%;
+    height: 80%;
 }
 
 
