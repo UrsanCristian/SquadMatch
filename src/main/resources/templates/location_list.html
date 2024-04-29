@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{base :: head}">
+</head>
+
+<body>
+<nav th:replace="~{base :: nav-bar}"></nav>
+<section id="hero-lobby" class="centered">
+</section>
+
+<section id="locationsList">
+    <div class="inline centered">
+        <h2 class="form-title">Explore Verified Locations</h2>
+    </div>
+    <div class="grid-list">
+        <div class="location-card" th:each="location : ${locations}">
+            <div class="card-content">
+                <img class="card-img-full" th:src="${location.getImageUrl()}" alt="Location Image">
+                <div class="overlay">
+                    <h3 class="p-title"><span th:text="${location.getStadium()}"></span></h3>
+                    <a class="btn" th:href="@{/locations/{id}(id = ${location.getId()})}">View Location</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div th:replace="~{base :: scripts}"></div>
+</body>>
+</html>

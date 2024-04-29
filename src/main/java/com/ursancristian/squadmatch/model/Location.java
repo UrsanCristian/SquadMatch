@@ -19,6 +19,7 @@ public class Location {
 
     private String stadium;
     private String address;
+    private String description;
 
     private String imageUrl;
 
