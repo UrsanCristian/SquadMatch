@@ -26,8 +26,22 @@
                 <span class="location-data" th:text="${lobby.getLocation().getAddress()}"></span>
             </div>
 
-            <div class="info-text inline" th:if="${#sets.contains(lobby.getTeam1(), user) or #sets.contains(lobby.getTeam2(), user)}">
-                <form class="inline centered" style="width: 100%" th:action="@{/matches/leave/{lobbyId}(lobbyId=${lobby.id})}" method="post">
+            <div class="info-text inline"
+                 th:if="${#sets.contains(lobby.getTeam1(), user) or #sets.contains(lobby.getTeam2(), user)}">
+                <form class="inline centered" style="width: 100%"
+                      th:action="@{/matches/switch-team/{lobbyId}(lobbyId=${lobby.id})}" method="post">
+                    <button class="btn-lobby" type="submit">Switch Team</button>
+                </form>
+            </div>
+
+            <span class="info-text inline centered" th:if="${session.errorMessage != null}"
+                  th:text="${session.errorMessage}"
+                  style="color: azure;"></span>
+
+            <div class="info-text inline"
+                 th:if="${#sets.contains(lobby.getTeam1(), user) or #sets.contains(lobby.getTeam2(), user)}">
+                <form class="inline centered" style="width: 100%"
+                      th:action="@{/matches/leave/{lobbyId}(lobbyId=${lobby.id})}" method="post">
                     <button class="btn-lobby" type="submit">Leave Lobby</button>
                 </form>
             </div>
@@ -49,7 +63,10 @@
                 <div class="players-list column" th:each="player : ${lobby.getTeam1()}">
                     <div class="player">
                         <img class="icon-md" th:src="${player.getPictureUrl()}" alt="Player Avatar">
+                        <span>
                         <span th:text="${player.getUsername()}"></span>
+                        <span th:if="${player.getUsername().equals(lobby.getCreator().getUsername())}">👑</span>
+                        </span>
                         <span class="inline" style="align-items: center; gap: 0.2rem">
                             <span th:text="${player.averageBehavior()}"></span>
                             <img class="icon-sm" th:src="@{/icons/behavior.png}" alt="Behavior Rating">

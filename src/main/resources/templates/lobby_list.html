@@ -16,7 +16,7 @@
 <section id="match-list">
     <div class="lobby-card" th:each="lobby : ${lobbies}">
         <img class="card-img" th:src="${lobby.location.getImageUrl()}" alt="Location Image">
-        <h3 class="p-title"><span th:text="${lobby.title}"></span> by <span
+        <h3 class="p-title" style="text-align: center"><span th:text="${lobby.title}"></span> by <span
                 th:text="${lobby.creator.getUsername()}"></span></h3>
         <p class="text">Scheduled on <span th:text="${{lobby.getScheduledTime()}}"></span></p>
         <p class="text">Location: <span th:text="${lobby.location.getStadium()}"></span></p>

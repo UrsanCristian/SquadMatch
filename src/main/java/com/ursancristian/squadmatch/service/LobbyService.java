@@ -99,4 +99,34 @@ public class LobbyService {
 
         return lobbyRepository.save(lobby);
     }
+
+    public Lobby switchTeam(int lobbyId, String username) {
+        Lobby lobby = lobbyRepository.findById(lobbyId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid lobby id"));
+
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Invalid username");
+        }
+
+        if (!lobby.getTeam1().contains(user) && !lobby.getTeam2().contains(user)) {
+            throw new IllegalArgumentException("User is not in this lobby");
+        }
+
+        if (lobby.getTeam1().contains(user)) {
+            if (lobby.getTeam2().size() >= lobby.getMaxPlayers() / 2) {
+                throw new IllegalStateException("The other team is full");
+            }
+            lobby.getTeam1().remove(user);
+            lobby.getTeam2().add(user);
+        } else {
+            if (lobby.getTeam1().size() >= lobby.getMaxPlayers() / 2) {
+                throw new IllegalStateException("The other team is full");
+            }
+            lobby.getTeam2().remove(user);
+            lobby.getTeam1().add(user);
+        }
+
+        return lobbyRepository.save(lobby);
+    }
 }

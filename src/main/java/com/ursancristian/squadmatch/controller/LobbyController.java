@@ -8,6 +8,7 @@ import com.ursancristian.squadmatch.repository.LobbyRepository;
 import com.ursancristian.squadmatch.repository.LocationRepository;
 import com.ursancristian.squadmatch.repository.UserRepository;
 import com.ursancristian.squadmatch.service.LobbyService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -130,4 +131,14 @@ public class LobbyController {
         return "redirect:/matches";
     }
 
+    @PostMapping("/matches/switch-team/{lobbyId}")
+    public String switchTeam(@PathVariable int lobbyId, Principal principal, HttpSession session) {
+        String username = principal.getName();
+        try {
+            lobbyService.switchTeam(lobbyId, username);
+        } catch (IllegalStateException err) {
+            session.setAttribute("errorMessage", err.getMessage());
+        }
+        return "redirect:/matches/" + lobbyId;
+    }
 }
