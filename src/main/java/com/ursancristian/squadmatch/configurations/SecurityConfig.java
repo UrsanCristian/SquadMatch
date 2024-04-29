@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring6.SpringTemplateEngine;
@@ -45,13 +46,15 @@ public class SecurityConfig {
                         .requestMatchers("/matches").permitAll()
                         .requestMatchers("/players").permitAll()
                         .requestMatchers("/lobbies").permitAll()
+                        .requestMatchers("/locations*").permitAll()
                         .requestMatchers("/locations/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login-submit")
-                        .defaultSuccessUrl("/", true)
+                        .successHandler(savedRequestAwareAuthenticationSuccessHandler())
+//                        .defaultSuccessUrl("/", true)
                         .failureHandler(customAuthenticationFailureHandler)
                         .permitAll()
                 )
@@ -73,6 +76,13 @@ public class SecurityConfig {
         templateEngine.setTemplateResolver(templateResolver);
         templateEngine.addDialect(new SpringSecurityDialect());
         return templateEngine;
+    }
+
+    @Bean
+    public SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler() {
+        SavedRequestAwareAuthenticationSuccessHandler auth = new SavedRequestAwareAuthenticationSuccessHandler();
+        auth.setTargetUrlParameter("redirectTo");
+        return auth;
     }
 
 }
