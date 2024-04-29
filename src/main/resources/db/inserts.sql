@@ -1,10 +1,8 @@
 # Location
 INSERT INTO public.location(id, address, image_url, stadium)
-VALUES (1,
-        'Strada Mareșal Constantin Prezan, Cluj-Napoca',
-        'https://i.imgur.com/A4Jc6Zm.jpg',
-        'Baza Sportiva Gheorgheni'
-       );
+VALUES (1,'Strada Mareșal Constantin Prezan, Cluj-Napoca','https://i.imgur.com/A4Jc6Zm.jpg','Baza Sportiva Gheorgheni'),
+        (2,'Strada Parâng, Cluj-Napoca','https://i.imgur.com/zD8AMwn.jpeg','Baza Sportiva La Terenuri'),
+        (3,'Strada Clăbucet, Cluj-Napoca','https://i.imgur.com/vtcskFl.jpeg','Baza Sportiva Unirea');
 
 #User
 INSERT INTO public.users(id, email, first_name, is_active, is_admin, last_name, losses, password, picture_url, username, wins)
