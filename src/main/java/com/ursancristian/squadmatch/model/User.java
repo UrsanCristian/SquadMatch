@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.List;
 
@@ -67,19 +68,25 @@ public class User implements UserDetails {
     private List<Lobby> lobbyCreator;
 
     public Double averageBehavior() {
-        return this.ratingsReceived.stream()
+        double average = this.ratingsReceived.stream()
                 .mapToInt(Rating::getBehavior)
                 .average()
                 .orElse(0f);
+
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        return Double.valueOf(df.format(average));
     }
 
     public Double averageSkills() {
-        return this.ratingsReceived.stream()
+        double average = this.ratingsReceived.stream()
                 .mapToInt(Rating::getSkills)
                 .average()
                 .orElse(0f);
-    }
 
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.valueOf(df.format(average));
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
