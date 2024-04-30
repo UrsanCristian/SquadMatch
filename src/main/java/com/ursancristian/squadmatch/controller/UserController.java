@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping("/players")
     public String userList(Model model) {
-        List<User> users = userRepository.findAll();
+        List<User> users = userRepository.findAllByOrderByWinsDesc();
         model.addAttribute("title", "Players");
         model.addAttribute("users", users);
         return "user_list";
