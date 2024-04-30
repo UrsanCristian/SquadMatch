@@ -48,6 +48,10 @@ public class Lobby {
     @OneToMany(mappedBy = "lobby")
     private List<Rating> ratings;
 
+    public boolean isTeamFull(List<User> team) {
+        return team.size() >= (this.getMaxPlayers() / 2);
+    }
+
 }
 
 

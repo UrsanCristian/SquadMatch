@@ -26,17 +26,32 @@
                 <span class="location-data" th:text="${lobby.getLocation().getAddress()}"></span>
             </div>
 
+<!--            <div class="info-text inline"-->
+<!--                 th:if="${#sets.contains(lobby.getTeam1(), user) or #sets.contains(lobby.getTeam2(), user)}">-->
+<!--                <form class="inline centered" style="width: 100%"-->
+<!--                      th:action="@{/matches/switch-team/{lobbyId}(lobbyId=${lobby.id})}" method="post">-->
+<!--                    <button class="btn-lobby" type="submit">Switch Team</button>-->
+<!--                </form>-->
+<!--            </div>-->
+
             <div class="info-text inline"
-                 th:if="${#sets.contains(lobby.getTeam1(), user) or #sets.contains(lobby.getTeam2(), user)}">
+                    th:if="${#sets.contains(lobby.getTeam1(), user) and !lobby.isTeamFull(lobby.getTeam2())}">
                 <form class="inline centered" style="width: 100%"
                       th:action="@{/matches/switch-team/{lobbyId}(lobbyId=${lobby.id})}" method="post">
                     <button class="btn-lobby" type="submit">Switch Team</button>
                 </form>
             </div>
 
-            <span class="info-text inline centered" th:if="${session.errorMessage != null}"
-                  th:text="${session.errorMessage}"
-                  style="color: azure;"></span>
+            <div th:if="${#sets.contains(lobby.getTeam2(), user) and !lobby.isTeamFull(lobby.getTeam1())}">
+                <form class="inline centered" style="width: 100%"
+                      th:action="@{/matches/switch-team/{lobbyId}(lobbyId=${lobby.id})}" method="post">
+                    <button class="btn-lobby" type="submit">Switch Team</button>
+                </form>
+            </div>
+
+<!--            <span class="info-text inline centered" th:if="${session.errorMessage != null}"-->
+<!--                  th:text="${session.errorMessage}"-->
+<!--                  style="color: azure;"></span>-->
 
             <div class="info-text inline"
                  th:if="${#sets.contains(lobby.getTeam1(), user) or #sets.contains(lobby.getTeam2(), user)}">
