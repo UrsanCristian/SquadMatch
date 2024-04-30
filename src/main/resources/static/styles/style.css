@@ -723,6 +723,21 @@ body {
     height: 80%;
 }
 
+/*Players List Page*/
+
+.players-container {
+    margin: 2rem 6rem 2rem 6rem;
+}
+
+.player-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #1daae7;
+}
 
 /* Media query section */
 
@@ -732,7 +747,7 @@ body {
     }
 }
 
-@media screen and (max-width:1170px) {
+@media screen and (max-width:1265px) {
     .navTrigger {
         display: block;
     }

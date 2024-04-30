@@ -5,9 +5,46 @@
 
 <body>
 <nav th:replace="~{base :: nav-bar}"></nav>
+<section id="hero-lobby" class="centered">
+</section>
+
+<section id="players-section">
+    <div class="inline centered">
+        <span class="section-title">Top Players</span>
+    </div>
+    <div class="players-container">
+
+        <div class="player-details">
+            <span>Profile</span>
+            <span>Username</span>
+            <span>Behavior</span>
+            <span>Skills</span>
+            <span>Wins</span>
+        </div>
+        <div class="player-details" th:each="player : ${users}">
+            <img class="icon-md" th:src="${player.getPictureUrl()}" alt="Profile Picture">
+            <span th:text="${player.getUsername()}"></span>
+            <span class="inline" style="align-items: center; gap: 0.2rem">
+                <span th:text="${player.averageBehavior()}"></span>
+                <img class="icon-sm" th:src="@{/icons/behavior.png}" alt="Behavior Rating">
+            </span>
+            <span class="inline" style="align-items: center; gap: 0.2rem">
+                <span th:text="${player.averageSkills()}"></span>
+                <img class="icon-sm" th:src="@{/icons/skill.png}" alt="Skill Rating">
+            </span>
+            <span class="inline" style="align-items: center; gap: 0.2rem">
+                <span th:text="${player.getWins()}"></span>
+                <img class="icon-sm" th:src="@{/icons/crown.png}" alt="Skill Rating">
+            </span>
+        </div>
+    </div>
+
+
+</section>
 
 
 <div th:replace="~{base :: scripts}"></div>
-</body>>
+</body>
+
 </html>
 
